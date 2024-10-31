@@ -14,10 +14,13 @@ public class Cliente {
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private int id_cliente;
     private String nombre_cliente;
+    @Column (nullable = false, unique = true)
     private String email;
     private String contrasena;
     private String telefono;
+    @Column(columnDefinition = "VARCHAR(100) DEFAULT 'CLIENTE'")
     private String rol;
+    @Column (columnDefinition = "TINYINT DEFAULT false")
     private Boolean is_vip;
 
     public Cliente() {

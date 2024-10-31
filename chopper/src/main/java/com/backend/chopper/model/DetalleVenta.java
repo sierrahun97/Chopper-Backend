@@ -12,7 +12,6 @@ import lombok.Setter;
 public class DetalleVenta {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE )
-
     private int id_detalle_venta;
     private int id_cliente;
     private int id_producto;

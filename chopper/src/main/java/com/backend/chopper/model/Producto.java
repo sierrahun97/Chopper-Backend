@@ -13,12 +13,17 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_producto;
+    @Column(unique = true)
     private String codigo_producto;
+    @Column(unique = true)
     private String nombre_producto;
     private double precio;
     private String categoria_pruducto;
+    @Column(length = 100)
     private String descripcion_producto;
+    @Column(columnDefinition = "INT DEFAULT 0")
     private int stock;
+    @Column(columnDefinition = "double DEFAULT 0")
     private double descuento_vip;
     private String url;
 
