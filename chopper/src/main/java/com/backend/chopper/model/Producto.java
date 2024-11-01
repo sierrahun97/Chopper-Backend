@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -26,6 +28,9 @@ public class Producto {
     @Column(columnDefinition = "double DEFAULT 0")
     private double descuento_vip;
     private String url;
+
+    @OneToMany (mappedBy = "producto")
+    private List<DetalleVenta> detalleVentas;
 
     public Producto() {
     }

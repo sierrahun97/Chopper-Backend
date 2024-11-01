@@ -15,7 +15,7 @@ public interface IVentaService {
     void crearVenta(Venta venta);
 
     //read - single one => SELECT * FROM cliente WHERE idCliente= id
-    Cliente buscarVentaById(Integer id);
+    Venta buscarVentaById(Integer id);
 
     //read - list => SELECT * FROM cliente
     List<Venta> buscarVentas();

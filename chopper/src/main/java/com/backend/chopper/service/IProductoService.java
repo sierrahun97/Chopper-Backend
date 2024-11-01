@@ -13,7 +13,7 @@ public interface IProductoService {
     void crearProducto(Producto producto);
 
     //read - single one => SELECT * FROM cliente WHERE idCliente= id
-    Cliente buscarProductoById(Integer id);
+    Producto buscarProductoById(Integer id);
 
     //read - list => SELECT * FROM cliente
     List<Producto> buscarProductos();

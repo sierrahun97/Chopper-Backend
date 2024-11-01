@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -22,6 +24,9 @@ public class Cliente {
     private String rol;
     @Column (columnDefinition = "TINYINT DEFAULT false")
     private Boolean is_vip;
+
+    @OneToMany (mappedBy = "cliente")
+    private List<Venta> ventas;
 
     public Cliente() {
     }

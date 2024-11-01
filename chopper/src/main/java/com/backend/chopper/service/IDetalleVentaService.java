@@ -14,7 +14,7 @@ public interface IDetalleVentaService {
     void crearDetalleVenta(DetalleVenta detalleVenta);
 
     //read - single one => SELECT * FROM cliente WHERE idCliente= id
-    Cliente buscarDetalleVentaById(Integer id);
+    DetalleVenta buscarDetalleVentaById(Integer id);
 
     //read - list => SELECT * FROM cliente
     List<DetalleVenta> buscarDetalleVentas();

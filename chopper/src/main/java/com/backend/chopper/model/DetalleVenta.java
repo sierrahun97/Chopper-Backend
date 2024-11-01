@@ -19,6 +19,15 @@ public class DetalleVenta {
     private double precio_unitario;
     private double subtotal;
 
+    @ManyToOne
+    @JoinColumn (name = "venta_id")
+    private Venta venta;
+
+    @ManyToOne
+    @JoinColumn (name = "producto_id")
+    private Producto producto;
+
+
     public DetalleVenta() {
     }
 

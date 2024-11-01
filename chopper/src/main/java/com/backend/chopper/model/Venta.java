@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,6 +23,15 @@ public class Venta {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     private double total;
+
+    @ManyToOne
+    @JoinColumn (name = "cliente_id")
+    private Cliente cliente;
+
+    @OneToMany (mappedBy = "venta")
+    private List<DetalleVenta> detallesVenta;
+
+
 
     public Venta() {
     }
