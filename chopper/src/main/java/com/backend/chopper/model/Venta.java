@@ -1,5 +1,6 @@
 package com.backend.chopper.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,6 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_venta;
-    private int id_cliente;
     @Column(unique = true)
     private String codigo_venta;
     @Temporal(TemporalType.TIMESTAMP)
@@ -26,6 +26,7 @@ public class Venta {
 
     @ManyToOne
     @JoinColumn (name = "cliente_id")
+    @JsonIgnore
     private Cliente cliente;
 
     @OneToMany (mappedBy = "venta")
@@ -36,9 +37,8 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(int id_venta, int id_cliente, String codigo_venta, Date fecha, double total) {
+    public Venta(int id_venta, String codigo_venta, Date fecha, double total) {
         this.id_venta = id_venta;
-        this.id_cliente = id_cliente;
         this.codigo_venta = codigo_venta;
         this.fecha = fecha;
         this.total = total;

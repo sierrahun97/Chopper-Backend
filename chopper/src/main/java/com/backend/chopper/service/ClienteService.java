@@ -35,16 +35,28 @@ public class ClienteService implements IClienteService {
         if (clienteEncontrado == null) {
             System.out.println("No se encontró el cliente");
         } else {
-            clienteEncontrado.setNombre_cliente(nuevoNombre);
-            clienteEncontrado.setEmail(nuevoEmail);
-            clienteEncontrado.setContrasena(nuevaContrasena);
-            clienteEncontrado.setTelefono(nuevoTelefono);
-            clienteEncontrado.setRol(nuevoRol);
+            if (nuevoNombre != null) {
+                clienteEncontrado.setNombre_cliente(nuevoNombre);
+            }
+            if (nuevoEmail != null) {
+                clienteEncontrado.setEmail(nuevoEmail);
+            }
+            if (nuevaContrasena != null) {
+                clienteEncontrado.setContrasena(nuevaContrasena);
+            }
+            if (nuevoTelefono != null) {
+                clienteEncontrado.setTelefono(nuevoTelefono);
+            }
+            if (nuevoRol != null) {
+                clienteEncontrado.setRol(nuevoRol);
+            }
             clienteEncontrado.setIs_vip(nuevoVip);
+
             clienteRepository.save(clienteEncontrado);
+            System.out.println("Cliente actualizado");
         }
-        System.out.println("Usuario actualizado");
     }
+
 
     @Override
     public void eliminarCliente(Integer id) {

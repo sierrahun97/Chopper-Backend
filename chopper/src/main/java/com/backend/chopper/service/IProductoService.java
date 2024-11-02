@@ -19,7 +19,7 @@ public interface IProductoService {
     List<Producto> buscarProductos();
 
     //Update
-    void actualizarProducto(int id,String nuevoCodigoProducto, String nuevoNombreProducto, double nuevoPrecio, String nuevaCategoria, String nuevaDescripcion, int nuevoStock, double nuevoDescuentoVip, String nuevaUrl);
+    void actualizarProducto(int id,String nuevoCodigoProducto, String nuevoNombreProducto, Double nuevoPrecio, String nuevaCategoria, String nuevaDescripcion, Integer nuevoStock, Double nuevoDescuentoVip, String nuevaUrl);
 
     //Delete = DELETE FROM cliente WHERE idcliente= id
     void eliminarProducto(Integer id);

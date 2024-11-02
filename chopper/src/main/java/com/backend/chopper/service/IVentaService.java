@@ -11,8 +11,10 @@ public interface IVentaService {
 
     // crud = Create Read Update Delete
 
+
     //create = guardar => INSERT INTO cliente (column 1, column 2....) VALUES (cliente.value 1, cliente.value 2...)
-    void crearVenta(Venta venta);
+    void crearVenta(Venta venta, int idCliente);
+
 
     //read - single one => SELECT * FROM cliente WHERE idCliente= id
     Venta buscarVentaById(Integer id);

@@ -1,6 +1,8 @@
 package com.backend.chopper.service;
 
 import com.backend.chopper.model.DetalleVenta;
+import com.backend.chopper.model.Producto;
+import com.backend.chopper.model.Venta;
 import com.backend.chopper.repository.IDetalleVentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,16 @@ public class DetalleVentaService implements IDetalleVentaService {
     private IDetalleVentaRepository detalleVentaRepository;
 
     @Override
-    public void crearDetalleVenta(DetalleVenta detalleVenta) {
-        detalleVentaRepository.save(detalleVenta);
+    public DetalleVenta crearDetalleVenta(Producto producto, Integer cantidad, Venta venta) {
+//        detalleVentaRepository.save(detalleVenta);
+        DetalleVenta detalleVenta = new DetalleVenta();
+        detalleVenta.setProducto(producto);
+        detalleVenta.setPrecio_unitario(producto.getPrecio());
+        detalleVenta.setCantidad(cantidad);
+        detalleVenta.setVenta(venta);
+        detalleVenta.setSubtotal(producto.getPrecio()*cantidad);
+        return detalleVentaRepository.save(detalleVenta);
+
     }
 
     @Override
@@ -31,7 +41,7 @@ public class DetalleVentaService implements IDetalleVentaService {
     }
 
     @Override
-    public void actualizarDetalleVenta(int id, int id_cliente, int id_producto, int nuevaCantidad, double nuevoPrecioUnitario, double nuevoSubtotal) {
+    public void actualizarDetalleVenta(int id, int id_cliente, int id_producto, Integer nuevaCantidad, Double nuevoPrecioUnitario, Double nuevoSubtotal) {
     DetalleVenta detalleVenta = this.buscarDetalleVentaById(id);
     detalleVenta.setCantidad(nuevaCantidad);
     detalleVenta.setPrecio_unitario(nuevoPrecioUnitario);
