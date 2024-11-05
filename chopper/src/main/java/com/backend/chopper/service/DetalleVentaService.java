@@ -24,6 +24,7 @@ public class DetalleVentaService implements IDetalleVentaService {
         detalleVenta.setCantidad(cantidad);
         detalleVenta.setVenta(venta);
         detalleVenta.setSubtotal(producto.getPrecio()*cantidad);
+        System.out.println(detalleVenta);
         return detalleVentaRepository.save(detalleVenta);
 
     }

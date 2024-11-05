@@ -1,5 +1,6 @@
 package com.backend.chopper.service;
 
+import com.backend.chopper.dto.CrearVentaDto;
 import com.backend.chopper.model.Cliente;
 import com.backend.chopper.model.DetalleVenta;
 import com.backend.chopper.model.Producto;
@@ -62,19 +63,22 @@ public class VentaService implements IVentaService {
         ventaRepository.deleteById(id);
     }
 
-    public void crearDetalleVenta(Venta venta, int idCliente, List<Producto> productos, Integer[] cantidades) {
+    public void crearDetalleVenta(CrearVentaDto ventaDto, Integer idCliente) {
         Cliente clienteEncontrado = clienteService.buscarClienteById(idCliente);
         if (clienteEncontrado != null) {
+            double subtotal = 0;
+            Venta venta = ventaDto.getVenta();
             venta.setFecha(new Date());
             venta.setCliente(clienteEncontrado);
             Venta v = ventaRepository.save(venta);
-            int i = 0;
-            for (Producto producto : productos) {
-                Producto p = productoService.buscarProductoById(producto.getId_producto());
-                Integer cantidad = cantidades[i];
+            for (int j = 0; j < ventaDto.getProductos().size(); j++) {
+                Producto p = productoService.buscarProductoById(ventaDto.getProductos().get(j).getId_producto());
+                Integer cantidad = ventaDto.getCantidades(j);
                 DetalleVenta detalleVenta = detalleVentaService.crearDetalleVenta(p, cantidad, v);
-                i++;
+                subtotal += detalleVenta.getSubtotal();
             }
+            v.setTotal(subtotal);
+            ventaRepository.save(v);
         } else {
             System.out.println("No se encontro el cliente");
         }
