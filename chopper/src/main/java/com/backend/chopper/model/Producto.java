@@ -1,5 +1,6 @@
 package com.backend.chopper.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +31,7 @@ public class Producto {
     private String url;
 
     @OneToMany (mappedBy = "producto")
+    @JsonIgnore
     private List<DetalleVenta> detalleVentas;
 
     public Producto() {
