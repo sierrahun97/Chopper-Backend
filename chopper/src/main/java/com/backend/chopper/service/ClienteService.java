@@ -30,6 +30,11 @@ public class ClienteService implements IClienteService {
     }
 
     @Override
+    public Cliente buscarClienteByEmail(String email) {
+        return clienteRepository.findByEmail(email);
+    }
+
+    @Override
     public void actualizarCliente(int id, String nuevoNombre, String nuevoEmail, String nuevaContrasena, String nuevoTelefono, String nuevoRol, boolean nuevoVip) {
         Cliente clienteEncontrado = clienteRepository.findById(id).orElse(null);
         if (clienteEncontrado == null) {

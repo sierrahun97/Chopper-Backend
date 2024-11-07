@@ -51,4 +51,9 @@ public class ClienteController {
         clienteService.eliminarCliente(id_cliente);
         return "Cliente eliminado correctamente";
     }
+
+    @PostMapping("/cliente/buscar/email")
+    public Cliente buscarClienteByEmail(@RequestParam("email") String email) {
+        return clienteService.buscarClienteByEmail(email);
+    }
 }

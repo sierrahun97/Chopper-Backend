@@ -22,6 +22,6 @@ public interface IClienteService {
     //Delete = DELETE FROM cliente WHERE idcliente= id
     void eliminarCliente(Integer id);
 
-
+    Cliente buscarClienteByEmail(String email);
 
 }
