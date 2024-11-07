@@ -20,7 +20,7 @@ public class Cliente {
     private String email;
     private String contrasena;
     private String telefono;
-    @Column(columnDefinition = "VARCHAR(100) DEFAULT 'CLIENTE'")
+    @Column(columnDefinition = "VARCHAR(100) DEFAULT 'CUSTOMER_USER'")
     private String rol;
     @Column (columnDefinition = "TINYINT DEFAULT false")
     private Boolean is_vip;
