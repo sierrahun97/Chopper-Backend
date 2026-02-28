@@ -13,16 +13,15 @@ import java.util.List;
 
 public class Cliente {
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id_cliente;
     private String nombre_cliente;
     @Column (nullable = false, unique = true)
     private String email;
     private String contrasena;
     private String telefono;
-    @Column(columnDefinition = "VARCHAR(100) DEFAULT 'CUSTOMER_USER'")
+    @Column(length = 100)
     private String rol;
-    @Column (columnDefinition = "TINYINT DEFAULT false")
     private Boolean is_vip;
 
     @OneToMany (mappedBy = "cliente")

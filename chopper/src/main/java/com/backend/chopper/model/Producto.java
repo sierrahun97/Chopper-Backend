@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Producto {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_producto;
     @Column(unique = true)
     private String codigo_producto;
@@ -24,9 +24,7 @@ public class Producto {
     private String categoria_producto;
     @Column(length = 100)
     private String descripcion_producto;
-    @Column(columnDefinition = "INT DEFAULT 0")
     private Integer stock;
-    @Column(columnDefinition = "double DEFAULT 0")
     private Double descuento_vip;
     private String url;
 

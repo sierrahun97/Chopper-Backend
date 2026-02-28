@@ -1,6 +1,5 @@
 package com.backend.chopper.service;
 
-import com.backend.chopper.model.Cliente;
 import com.backend.chopper.model.Producto;
 
 import java.util.List;

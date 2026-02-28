@@ -5,8 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -16,12 +15,11 @@ import java.util.List;
 
 public class Venta {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_venta;
     @Column(unique = true)
     private String codigo_venta;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
+    private LocalDateTime fecha;
     private double total;
 
     @ManyToOne
@@ -32,12 +30,10 @@ public class Venta {
     @OneToMany (mappedBy = "venta")
     private List<DetalleVenta> detallesVenta;
 
-
-
     public Venta() {
     }
 
-    public Venta(int id_venta, String codigo_venta, Date fecha, double total) {
+    public Venta(int id_venta, String codigo_venta, LocalDateTime fecha, double total) {
         this.id_venta = id_venta;
         this.codigo_venta = codigo_venta;
         this.fecha = fecha;

@@ -45,7 +45,7 @@ public class ProductoService implements IProductoService {
         if (nuevoNombreProducto != null) {
             producto.setNombre_producto(nuevoNombreProducto);
         }
-        if (nuevoPrecio != 0) {
+        if (nuevoPrecio != null) {
             producto.setPrecio(nuevoPrecio);
         }
         if (nuevaCategoria != null) {

@@ -1,0 +1,91 @@
+# Configuración alternativa - Copia este contenido a application.properties si necesitas ajustar
+
+# ===============================
+# CONFIGURACIÓN BÁSICA
+# ===============================
+spring.application.name=chopper
+server.port=8080
+
+# ===============================
+# CONFIGURACIÓN DE BASE DE DATOS
+# ===============================
+
+# Opción 1: PostgreSQL Local (configuración actual)
+spring.datasource.url=jdbc:postgresql://localhost:5432/chopper_backend
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Opción 2: PostgreSQL con contraseña diferente (descomenta y ajusta)
+#spring.datasource.url=jdbc:postgresql://localhost:5432/chopper_backend
+#spring.datasource.username=postgres
+#spring.datasource.password=1234
+#spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Opción 3: PostgreSQL en servidor remoto (descomenta y ajusta)
+#spring.datasource.url=jdbc:postgresql://192.168.1.100:5432/chopper_backend
+#spring.datasource.username=tu_usuario
+#spring.datasource.password=tu_contraseña
+#spring.datasource.driver-class-name=org.postgresql.Driver
+
+# ===============================
+# CONFIGURACIÓN DE JPA/HIBERNATE
+# ===============================
+
+# Opciones para ddl-auto:
+# - update: actualiza el esquema automáticamente (RECOMENDADO PARA DESARROLLO)
+# - create: crea las tablas cada vez que inicia (BORRA DATOS)
+# - create-drop: crea al iniciar y borra al cerrar
+# - validate: solo valida el esquema
+# - none: no hace nada
+spring.jpa.hibernate.ddl-auto=update
+
+# Dialecto de PostgreSQL
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Mostrar SQL en consola (útil para debug)
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# ===============================
+# CONFIGURACIÓN DE LOGGING
+# ===============================
+
+# Nivel de logging para SQL
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+# Nivel general de logging (descomenta si necesitas más detalle)
+#logging.level.root=INFO
+#logging.level.com.backend.chopper=DEBUG
+#logging.level.org.springframework.web=DEBUG
+
+# ===============================
+# CONFIGURACIÓN DE POOL DE CONEXIONES
+# ===============================
+
+# HikariCP (pool de conexiones por defecto en Spring Boot)
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.connection-timeout=30000
+spring.datasource.hikari.idle-timeout=600000
+spring.datasource.hikari.max-lifetime=1800000
+
+# ===============================
+# NOTAS IMPORTANTES
+# ===============================
+
+# 1. Para cambiar la contraseña de PostgreSQL:
+#    - Edita la línea: spring.datasource.password=TU_CONTRASEÑA
+
+# 2. Para cambiar el puerto de la aplicación:
+#    - Edita la línea: server.port=PUERTO_DESEADO
+
+# 3. Para conectarse a una BD diferente:
+#    - Edita la línea: spring.datasource.url=jdbc:postgresql://HOST:PUERTO/NOMBRE_BD
+
+# 4. En PRODUCCIÓN, considera:
+#    - Cambiar ddl-auto a "validate" o "none"
+#    - Deshabilitar show-sql (false)
+#    - Usar variables de entorno para credenciales sensibles
+

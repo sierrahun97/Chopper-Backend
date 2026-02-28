@@ -12,7 +12,7 @@ import lombok.Setter;
 
 public class DetalleVenta {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_detalle_venta;
 
     private int cantidad;

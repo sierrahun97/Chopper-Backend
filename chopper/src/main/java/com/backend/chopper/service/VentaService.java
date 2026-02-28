@@ -9,7 +9,7 @@ import com.backend.chopper.repository.IVentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -30,7 +30,7 @@ public class VentaService implements IVentaService {
     public void crearVenta(Venta venta, int idCliente) {
         Cliente clienteEncontrado = clienteService.buscarClienteById(idCliente);
         if (clienteEncontrado != null) {
-            venta.setFecha(new Date());
+            venta.setFecha(LocalDateTime.now());
             venta.setCliente(clienteEncontrado);
             ventaRepository.save(venta);
         } else {
@@ -51,11 +51,13 @@ public class VentaService implements IVentaService {
     }
 
     @Override
-    public void actualizarVenta(int id, int id_cliente, String nuevoCodigoVenta, Date nuevaFecha, double nuevoTotal) {
+    public void actualizarVenta(int id, int id_cliente, String nuevoCodigoVenta, double nuevoTotal) {
         Venta venta = this.buscarVentaById(id);
-        venta.setCodigo_venta(nuevoCodigoVenta);
-        venta.setFecha(nuevaFecha);
-        venta.setTotal(nuevoTotal);
+        if (venta != null) {
+            venta.setCodigo_venta(nuevoCodigoVenta);
+            venta.setTotal(nuevoTotal);
+            ventaRepository.save(venta);
+        }
     }
 
     @Override
@@ -68,7 +70,7 @@ public class VentaService implements IVentaService {
         if (clienteEncontrado != null) {
             double subtotal = 0;
             Venta venta = ventaDto.getVenta();
-            venta.setFecha(new Date());
+            venta.setFecha(LocalDateTime.now());
             venta.setCliente(clienteEncontrado);
             Venta v = ventaRepository.save(venta);
             for (int j = 0; j < ventaDto.getProductos().size(); j++) {
