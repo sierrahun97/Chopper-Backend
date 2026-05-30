@@ -1,7 +1,7 @@
 -- Script DDL para la base de datos chopper_backend en PostgreSQL
 
 -- Crear la base de datos (ejecutar como superusuario)
--- CREATE DATABASE chopper_backend;
+CREATE DATABASE chopper_backend;
 
 -- Conectarse a la base de datos
 -- \c chopper_backend;
@@ -72,12 +72,16 @@ ON CONFLICT (email) DO NOTHING;
 -- Insertar productos de prueba
 INSERT INTO productos (codigo_producto, nombre_producto, precio, categoria_producto, descripcion_producto, stock, descuento_vip, url)
 VALUES
-    ('PROD001', 'Laptop HP', 899.99, 'TECNOLOGÍA', 'Laptop HP 15 pulgadas', 10, 0.10, 'http://example.com/laptop'),
-    ('PROD002', 'Mouse Logitech', 25.99, 'TECNOLOGÍA', 'Mouse inalámbrico', 50, 0.05, 'http://example.com/mouse'),
-    ('PROD003', 'Teclado Mecánico', 79.99, 'TECNOLOGÍA', 'Teclado mecánico RGB', 30, 0.08, 'http://example.com/teclado'),
-    ('PROD004', 'Monitor LG 24"', 199.99, 'TECNOLOGÍA', 'Monitor Full HD 24 pulgadas', 15, 0.12, 'http://example.com/monitor'),
-    ('PROD005', 'Auriculares Sony', 149.99, 'AUDIO', 'Auriculares con cancelación de ruido', 25, 0.15, 'http://example.com/auriculares')
-ON CONFLICT (codigo_producto) DO NOTHING;
+    ('PROD001', 'Concentrado Premium para Perro Adulto 15kg', 120.00, 'ALIMENTOS', 'Alimento balanceado para perros adultos con proteínas y vitaminas', 20, 0.10, 'http://example.com/concentrado-perro-adulto'),
+
+    ('PROD002', 'Concentrado para Cachorros 8kg', 85.50, 'ALIMENTOS', 'Alimento especial para cachorros que favorece el crecimiento', 15, 0.05, 'http://example.com/concentrado-cachorro'),
+
+    ('PROD003', 'Concentrado para Gato Adulto 10kg', 95.90, 'ALIMENTOS', 'Alimento completo para gatos adultos con taurina y proteínas', 18, 0.08, 'http://example.com/concentrado-gato'),
+
+    ('PROD004', 'Snacks Naturales para Perro', 18.99, 'SNACKS', 'Premios naturales para entrenamiento de perros', 40, 0.12, 'http://example.com/snacks-perro'),
+
+    ('PROD005', 'Comida Húmeda para Gato Lata 400g', 9.50, 'ALIMENTOS', 'Comida húmeda para gatos con sabor a pollo y vitaminas', 60, 0.15, 'http://example.com/comida-humeda-gato')
+    ON CONFLICT (codigo_producto) DO NOTHING;
 
 -- Comentarios sobre las tablas
 COMMENT ON TABLE clientes IS 'Tabla que almacena la información de los clientes';

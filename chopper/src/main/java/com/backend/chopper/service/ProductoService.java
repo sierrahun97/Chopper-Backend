@@ -20,8 +20,8 @@ public class ProductoService implements IProductoService {
 
     @Override
     public Producto buscarProductoById(Integer id) {
-        Producto producto = productoRepository.findById(id).orElse(null);
-        return producto;
+        return productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se encontró el producto con ID: " + id));
     }
 
     @Override
@@ -34,10 +34,6 @@ public class ProductoService implements IProductoService {
     public void actualizarProducto(int id, String nuevoCodigoProducto, String nuevoNombreProducto, Double nuevoPrecio, String nuevaCategoria, String nuevaDescripcion, Integer nuevoStock, Double nuevoDescuentoVip, String nuevaUrl) {
 
         Producto producto = this.buscarProductoById(id);
-        if (producto == null) {
-            System.out.println("No se encontró el producto");
-            return;
-        }
 
         if (nuevoCodigoProducto != null) {
             producto.setCodigo_producto(nuevoCodigoProducto);
